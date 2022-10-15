@@ -5,14 +5,17 @@ import './App.css';
 
 import TotalDisplay from './TotalDisplay';
 import CalcButton from './CalcButton';
-import {applyNumber} from '../actions/index';
+import {applyNumber, changeOperator} from '../actions/index';
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const calculationHandler = (number) => {
-    console.log(number, state);
-    dispatch(applyNumber(number));
+    dispatch(applyNumber(parseInt(number)));
+  }
+
+  const operatorHandler = (operator) => {
+    dispatch(changeOperator(operator));
   }
 
   return (
@@ -38,27 +41,27 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={1} onClick={(evt) => calculationHandler(parseInt(evt.target.value))}/>
-              <CalcButton value={2}/>
-              <CalcButton value={3}/>
+              <CalcButton value={1} onClick={(evt) => calculationHandler(evt.target.value)}/>
+              <CalcButton value={2} onClick={(evt) => calculationHandler(evt.target.value)} />
+              <CalcButton value={3} onClick={(evt) => calculationHandler(evt.target.value)} />
             </div>
 
             <div className="row">
-              <CalcButton value={4}/>
-              <CalcButton value={5}/>
-              <CalcButton value={6}/>
+              <CalcButton value={4} onClick={(evt) => calculationHandler(evt.target.value)} />
+              <CalcButton value={5} onClick={(evt) => calculationHandler(evt.target.value)} />
+              <CalcButton value={6} onClick={(evt) => calculationHandler(evt.target.value)} />
             </div>
 
             <div className="row">
-              <CalcButton value={7}/>
-              <CalcButton value={8}/>
-              <CalcButton value={9}/>
+              <CalcButton value={7} onClick={(evt) => calculationHandler(evt.target.value)} />
+              <CalcButton value={8} onClick={(evt) => calculationHandler(evt.target.value)} />
+              <CalcButton value={9} onClick={(evt) => calculationHandler(evt.target.value)} />
             </div>
 
             <div className="row">
-              <CalcButton value={"+"}/>
-              <CalcButton value={"*"}/>
-              <CalcButton value={"-"}/>
+              <CalcButton value={"+"} onClick={(evt) => operatorHandler(evt.target.value)} />
+              <CalcButton value={"*"} onClick={(evt) => operatorHandler(evt.target.value)} />
+              <CalcButton value={"-"} onClick={(evt) => operatorHandler(evt.target.value)} />
             </div>
 
             <div className="row ce_button">
