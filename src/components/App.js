@@ -30,6 +30,10 @@ function App() {
     dispatch(applyMemory(state.memory));
   }
 
+  const resetMemoryHandler = () => {
+    dispatch(resetMemory());
+  }
+
   return (
     <div className="App">
       <nav className="navbar navbar-dark bg-dark">
@@ -49,7 +53,7 @@ function App() {
             <div className="row">
               <CalcButton value={"M+"} onClick={memorySetHandler} />
               <CalcButton value={"MR"} onClick={totalSetHandler} />
-              <CalcButton value={"MC"}/>
+              <CalcButton value={"MC"} onClick={resetMemoryHandler} />
             </div>
 
             <div className="row">

@@ -51,7 +51,8 @@ const reducer = (state, action) => {
 
         case(RESET_MEMORY):
             return({
-
+                ...state,
+                memory: 0
             });
 
         default:

@@ -31,5 +31,5 @@ export const applyMemory = (number) => {
 }
 
 export const resetMemory = () => {
-    
+    return({type:RESET_MEMORY});
 }
