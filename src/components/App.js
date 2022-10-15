@@ -5,7 +5,7 @@ import './App.css';
 
 import TotalDisplay from './TotalDisplay';
 import CalcButton from './CalcButton';
-import {applyNumber, changeOperator, clearDisplay, setMemory, setTotal, resetMemory} from '../actions/index';
+import {applyNumber, changeOperator, clearDisplay, setMemory, applyMemory, resetMemory} from '../actions/index';
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -26,6 +26,10 @@ function App() {
     dispatch(setMemory(state.total));
   }
 
+  const totalSetHandler = () => {
+    dispatch(applyMemory(state.memory));
+  }
+
   return (
     <div className="App">
       <nav className="navbar navbar-dark bg-dark">
@@ -43,13 +47,13 @@ function App() {
             </div>
             
             <div className="row">
-              <CalcButton value={"M+"} onClick={() => memorySetHandler()}/>
-              <CalcButton value={"MR"}/>
+              <CalcButton value={"M+"} onClick={memorySetHandler} />
+              <CalcButton value={"MR"} onClick={totalSetHandler} />
               <CalcButton value={"MC"}/>
             </div>
 
             <div className="row">
-              <CalcButton value={1} onClick={(evt) => calculationHandler(evt.target.value)}/>
+              <CalcButton value={1} onClick={(evt) => calculationHandler(evt.target.value)} />
               <CalcButton value={2} onClick={(evt) => calculationHandler(evt.target.value)} />
               <CalcButton value={3} onClick={(evt) => calculationHandler(evt.target.value)} />
             </div>
