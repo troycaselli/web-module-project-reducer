@@ -5,13 +5,14 @@ import './App.css';
 
 import TotalDisplay from './TotalDisplay';
 import CalcButton from './CalcButton';
-import {addOne} from '../actions/index';
+import {applyNumber} from '../actions/index';
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const addOneHandler = () => {
-    dispatch(addOne());
+  const calculationHandler = (number) => {
+    console.log(number, state);
+    dispatch(applyNumber(number));
   }
 
   return (
@@ -37,7 +38,7 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={1} onClick={addOneHandler}/>
+              <CalcButton value={1} onClick={(evt) => calculationHandler(parseInt(evt.target.value))}/>
               <CalcButton value={2}/>
               <CalcButton value={3}/>
             </div>
