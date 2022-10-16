@@ -23,11 +23,11 @@ function App() {
   }
 
   const memorySetHandler = () => {
-    dispatch(setMemory(state.total));
+    dispatch(setMemory());
   }
 
   const totalSetHandler = () => {
-    dispatch(applyMemory(state.memory));
+    dispatch(applyMemory());
   }
 
   const resetMemoryHandler = () => {
